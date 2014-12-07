@@ -1,0 +1,73 @@
+﻿@using Hooli.MySql;
+@using System.Data;
+@using Hooli.Models
+
+@model Hooli.Models.ProfileDownloadViewModel
+
+
+@{
+    ViewBag.Title = "Profile";
+}
+
+<style>
+    table {
+        border-collapse: collapse;
+    }
+
+    table, td, th {
+        border: 1px solid black;
+        padding: 3px 3px 3px 5px;
+    }
+</style>
+
+<h2>User Profile</h2>
+
+<div>
+    <h2>Available Updates</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>
+                    <div>Software</div>
+                </th>
+                <th>
+                    <div>Current Version</div>
+                </th>
+                <th>
+                    <div>New Version</div>
+                </th>
+                <th>
+                    <div>Download</div>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @if (!(Model.history == null))
+            {
+                foreach (var dl in Model.history)
+                {
+                    <tr>
+                        <td>@dl.softwareName</td>
+                        <td>@dl.dl_version</td>
+                        <td>@dl.version</td>
+                        <td>@Html.ActionLink("Download", "Download", "ActiveSoftware", new { id = dl.id }, null)</td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td>No Updates</td>
+                    <td>No Updates</td>
+                    <td>No Updates</td>
+                    <td>No Updates</td>
+                </tr>
+            }
+
+
+
+
+        </tbody>
+    </table>
+</div>

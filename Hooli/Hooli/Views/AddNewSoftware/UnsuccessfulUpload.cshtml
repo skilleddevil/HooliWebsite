@@ -1,0 +1,17 @@
+﻿@{
+    ViewBag.Title = "UnsuccessfulUpload";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Error: Unsuccessful Upload</h2>
+
+<p>
+    @ViewBag.Error
+    <div>
+        @Html.ActionLink("Click Here", "Index", "ActiveSoftware") to view active software.
+    </div>
+    <br/>
+    <div>
+        @Html.ActionLink("Click Here", "Index") to try a different upload.
+    </div>
+</p>

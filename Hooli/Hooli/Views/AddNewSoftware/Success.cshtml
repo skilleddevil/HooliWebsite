@@ -1,0 +1,16 @@
+﻿@{
+    ViewBag.Title = "Success";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Success</h2>
+<p>
+    Your file was successfully uploaded. 
+    <div>
+        @Html.ActionLink("Click Here", "Index", "ActiveSoftware") to view active software.
+    </div>
+    <br/>
+    <div>
+        @Html.ActionLink("Click Here", "Index") to upload more software.
+    </div>
+</p>

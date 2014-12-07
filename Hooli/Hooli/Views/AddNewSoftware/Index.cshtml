@@ -1,0 +1,57 @@
+﻿@model Hooli.Models.SoftwareModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Add New Software</h2>
+<script src="~/Scripts/jquery-1.8.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+
+@using (Html.BeginForm("Save", "AddNewSoftware", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.ValidationSummary(true)
+    <table>
+        <tr>
+            <td>
+                <!--<input type="file" name="Uploaded File" accept="file_extension" required/>-->
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <fieldset>
+                    <ol>
+                        <li>
+                            @Html.LabelFor(m => m.fileName)
+                            @Html.TextBoxFor(m => m.fileName, new { type = "file", name = "Uploaded File", accept = "file_extension" })
+                            @Html.ValidationMessageFor(m => m.fileName)
+                        </li>
+                        <li>
+                            @Html.LabelFor(m => m.softwareName)
+                            @Html.TextBoxFor(m => m.softwareName)
+                            @Html.ValidationMessageFor(m => m.softwareName)
+                        </li>
+                        <li>
+                            @Html.LabelFor(m => m.version)
+                            @Html.TextBoxFor(m => m.version)
+                            @Html.ValidationMessageFor(m => m.version)
+                        </li>
+                        <li>
+                            @Html.LabelFor(m => m.description)
+                            @Html.TextBoxFor(m => m.description)
+                            @Html.ValidationMessageFor(m => m.version)
+                        </li>
+                    </ol>
+                </fieldset>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <input type="submit" name="Submit" value="Submit" />
+            </td>
+        </tr>
+    </table>
+
+}

@@ -1,0 +1,42 @@
+﻿@using Hooli.MySql;
+@using System.Data;
+@using Hooli.Models;
+@using System.Web.Security;
+@model IEnumerable<Hooli.Models.CommentModel>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Comments</h2>
+
+<style>
+   #commenttable .cellright {text-align:right}
+</style>
+
+<input type="hidden" value="@ViewBag.id" id="id" />
+<table width="100%" id="commenttable">
+    <tr>
+        <th>@Html.ActionLink("new comment", "Index", "AddnewComment", new { id = ViewBag.id }, null)</th>
+    </tr>
+</table>
+
+@if(Model.Count() != 0)
+{ 
+    foreach (CommentModel m in Model)
+    { 
+    <table width="100%" id="commenttable" bgcolor="#FFFFF">
+    <tr>
+        <th>By: @m.User_Name</th>
+        <td>on: @m.Date</td>
+        <td class="cellright">@m.Rating /5</td>
+    </tr>
+        <tr>
+            <td> @m.Text</td>
+        </tr>
+        <!--if current usrid = usrid of post, have edit option-->
+    </table>
+    <br />
+    }
+} else {
+    <p>There are no comments yet!</p>
+}
