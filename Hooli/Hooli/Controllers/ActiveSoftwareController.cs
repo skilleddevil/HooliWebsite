@@ -191,7 +191,7 @@ namespace Hooli.Controllers
                     download.softwareName = (string)row["softwareName"];
                     download.version = (string)row["version"];
                     download.id = (int)row["id"];
-                    download.download_date = (DateTime)row["download_data"];
+                    download.download_date = (DateTime)row["download_date"];
                     download.dl_version = (string)row["dl_version"];
                 }
             }
