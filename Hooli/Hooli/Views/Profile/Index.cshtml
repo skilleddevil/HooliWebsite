@@ -43,7 +43,7 @@
         </thead>
         <tbody>
 
-            @if (!(Model.history == null))
+            @if (Model.history.Count != 0)
             {
                 foreach (var dl in Model.history)
                 {

@@ -50,7 +50,7 @@ namespace Hooli.Controllers
         private ProfileDownloadViewModel FillProfileDownloadViewModel(ProfileModel profile)
         {
             DBConnect db = new DBConnect();
-            string download_query = "SELECT * FROM Download_history";
+            string download_query = "SELECT * FROM Download_history WHERE user_id = " + profile.id + ";";
             MySqlCommand download_cmd = new MySqlCommand(download_query);
 
             ProfileDownloadViewModel download = new ProfileDownloadViewModel();
@@ -58,7 +58,7 @@ namespace Hooli.Controllers
 
             download.history = new List<DownloadHistoryModel>(1000);
 
-            if (db.GetData(download_cmd) != null)
+            if (db.GetAffected(download_cmd) != 0)
             {
                 foreach (DataRow row in db.GetData(download_cmd).Rows)
                 {
@@ -84,6 +84,7 @@ namespace Hooli.Controllers
                     });*/
                 }
             }
+
 
             return download;
         }

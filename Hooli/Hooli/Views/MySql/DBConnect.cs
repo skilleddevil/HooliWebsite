@@ -154,6 +154,21 @@ namespace Hooli.MySql
             return dt;
         }
 
+        public int GetAffected(MySqlCommand cmd)
+        {
+            int num = 0;
+            DataTable dt = new DataTable();
+            if (this.OpenConnection() == true)
+            {
+                cmd.Connection = connection;
+
+                num = cmd.ExecuteNonQuery();
+
+                this.CloseConnection();
+            }
+            return num;
+        }
+
         /*public DataTable GetData(string query)
         {
             DataTable dt = new DataTable();
